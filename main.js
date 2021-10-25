@@ -30,8 +30,14 @@ class Blockchain {
     }
 
     addBlock(newBlock) {
-        newBlock.previousHash = this.getLatestBlock.hash;
+        newBlock.previousHash = this.getLatestBlock().hash;
         newBlock.hash = newBlock.calculateHash();
         this.chain.push(newBlock);
     }
 }
+
+let timCoin = new Blockchain();
+timCoin.addBlock(new Block(1, '02/24/2021', { amount: 4}));
+timCoin.addBlock(new Block(2, '03/13/2021', { amount: 10}));
+
+console.log(JSON.stringify(timCoin, null, 4));
